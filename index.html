@@ -1,0 +1,250 @@
+<!-- ================================================================
+     MY PORTFOLIO WEBSITE — Full Reference Build
+     This file uses (almost) every HTML tag & attribute from the
+     HTML deck. Read the comments as you scroll — they explain WHY
+     each tag is used, not just what it does.
+================================================================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar">
+    <div class="logo">Port<span class="accent">folio</span></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#playground">CSS Lab</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <p class="eyebrow">Hi, my name is</p>
+      <h1>Aditi Sharma</h1>
+      <h2>I build things for the <em>web</em>.</h2>
+      <p class="hero-text">
+        I'm a beginner front-end developer learning <b>HTML</b> and
+        <b>CSS</b> to design clean, responsive, <u>animated</u> websites.
+        <sup>(since 2024)</sup>
+      </p>
+      <a href="#projects" class="btn">See my work</a>
+    </div>
+    <div class="scroll-indicator">&#8595;</div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <h2 class="section-title">01. About Me</h2>
+    <div class="about-wrapper">
+      <div class="about-image">
+        <img src="https://picsum.photos/id/64/400/400" alt="Portrait of Aditi Sharma" width="400" height="400">
+      </div>
+      <div class="about-text">
+        <p>
+          I'm a student learning web development. I enjoy turning
+          <i>plain HTML</i> into structured, good-looking pages using CSS.
+          My favorite part of coding is watching a page go from a
+          black-and-white document to a fully designed, animated layout.
+        </p>
+        <p>
+          Outside of coding I like sketching interfaces, reading about
+          design systems, and practicing small projects like this one.
+        </p>
+        <p class="fun-fact">
+          Fun fact: water is written as H<sub>2</sub>O — that's a
+          <small>subscript tag</small> in action, just like the
+          <sup>superscript</sup> note up in the intro. <big>Neat, right?</big>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="skills" id="skills">
+    <h2 class="section-title">02. Skills</h2>
+    <ul class="skills-list">
+      <li class="skill-chip">HTML5</li>
+      <li class="skill-chip">CSS3</li>
+      <li class="skill-chip">Flexbox</li>
+      <li class="skill-chip">Responsive Design</li>
+      <li class="skill-chip">Animations</li>
+      <li class="skill-chip">Git &amp; GitHub</li>
+      <li class="skill-chip">Figma</li>
+    </ul>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="projects" id="projects">
+    <h2 class="section-title">03. Projects</h2>
+    <div class="project-grid">
+
+      <article class="project-card">
+        <img src="https://picsum.photos/id/1015/350/220" alt="Screenshot of Weather App project" width="350" height="220">
+        <h3>Weather App</h3>
+        <p>A simple app that shows live weather using a public API.</p>
+        <a href="#" target="_blank" class="card-link">View Project &rarr;</a>
+      </article>
+
+      <article class="project-card">
+        <img src="https://picsum.photos/id/292/350/220" alt="Screenshot of Recipe Finder project" width="350" height="220">
+        <h3>Recipe Finder</h3>
+        <p>Search and save recipes by ingredient.</p>
+        <a href="#" target="_blank" class="card-link">View Project &rarr;</a>
+      </article>
+
+      <article class="project-card">
+        <img src="https://picsum.photos/id/180/350/220" alt="Screenshot of Quiz Game project" width="350" height="220">
+        <h3>Quiz Game</h3>
+        <p>A multiple-choice quiz built with vanilla JavaScript.</p>
+        <a href="#" target="_blank" class="card-link">View Project &rarr;</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============ CSS LAB (live demos of tricky properties) ============ -->
+  <section class="playground" id="playground">
+    <h2 class="section-title">04. CSS Lab — Live Demos</h2>
+    <p class="playground-intro">A few properties are easier to understand by watching them than reading them. Hover the boxes below.</p>
+
+    <div class="lab-row">
+      <div class="lab-card">
+        <h4>Transforms</h4>
+        <div class="lab-shapes">
+          <div class="shape shape-rotate">rotate</div>
+          <div class="shape shape-scale">scale</div>
+          <div class="shape shape-skew">skew</div>
+          <div class="shape shape-translate">translate</div>
+        </div>
+      </div>
+
+      <div class="lab-card">
+        <h4>Transition timing-function</h4>
+        <div class="lab-shapes">
+          <div class="timing-box timing-linear">linear</div>
+          <div class="timing-box timing-ease">ease</div>
+          <div class="timing-box timing-ease-in-out">ease-in-out</div>
+        </div>
+      </div>
+
+      <div class="lab-card">
+        <h4>display: none vs visibility: hidden</h4>
+        <div class="visibility-demo">
+          <div class="box">Box 1</div>
+          <div class="box box-display-none">Box 2 (display:none)</div>
+          <div class="box">Box 3</div>
+        </div>
+        <p class="lab-caption">Box 2 is removed from the page entirely — Box 1 and Box 3 sit right next to each other.</p>
+      </div>
+
+      <div class="lab-card">
+        <h4>z-index stacking</h4>
+        <div class="zindex-demo">
+          <div class="z-box z-back">z-index: 1</div>
+          <div class="z-box z-front">z-index: 2</div>
+        </div>
+      </div>
+    </div>
+
+    <pre class="code-block"><code>.card:hover {
+  transform: translateY(-8px) scale(1.03);
+  transition: transform 0.3s ease-in-out;
+}</code></pre>
+    <p class="code-caption"><small>Preformatted text with the &lt;pre&gt; tag keeps every space and line break exactly as typed — great for showing code.</small></p>
+  </section>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <section class="experience" id="experience">
+    <h2 class="section-title">05. Experience</h2>
+    <table class="experience-table">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Role</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2026</td>
+          <td>Web Dev Student</td>
+          <td>Learning HTML &amp; CSS fundamentals</td>
+        </tr>
+        <tr>
+          <td>2025</td>
+          <td>Design Enthusiast</td>
+          <td>Started exploring UI/UX with Figma</td>
+        </tr>
+        <tr>
+          <td colspan="2">Total time learning</td>
+          <td>2 years and counting</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="divider">
+
+    <ol class="milestones">
+      <li>Built my first &lt;div&gt; layout</li>
+      <li>Learned Flexbox and stopped using floats</li>
+      <li>Shipped this portfolio site</li>
+    </ol>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="contact" id="contact">
+    <h2 class="section-title">06. Contact Me</h2>
+    <form class="contact-form" action="#" method="post">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" placeholder="you@example.com" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" placeholder="Write your message..."></textarea>
+
+      <fieldset class="contact-preference">
+        <legend>Preferred contact method</legend>
+        <label><input type="radio" name="contact-method" value="email" checked> Email</label>
+        <label><input type="radio" name="contact-method" value="phone"> Phone</label>
+      </fieldset>
+
+      <label for="topic">Topic</label>
+      <select id="topic" name="topic">
+        <option value="job">Job Opportunity</option>
+        <option value="freelance">Freelance Project</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label><input type="checkbox" name="newsletter"> Send me updates about new projects</label>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <p>&copy; 2026 Aditi Sharma. All rights reserved.</p>
+    <ul class="social-links">
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Twitter</a></li>
+    </ul>
+  </footer>
+
+</body>
+</html>

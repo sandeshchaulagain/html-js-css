@@ -1,0 +1,613 @@
+/* =================================================================
+   MY PORTFOLIO WEBSITE — style.css (FULL REFERENCE BUILD)
+   Organized to match index.html, top to bottom. Every comment
+   names the concept being demonstrated so you can trace it back
+   to your class notes.
+================================================================== */
+
+/* ---------- 0. RESET & BASE (universal selector, box model, typography) ---------- */
+* {
+  box-sizing: border-box;   /* padding/border no longer add to width/height */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;  /* sans-serif = generic family fallback */
+  line-height: 1.6;
+  color: #22223b;
+}
+
+.section-title {
+  text-transform: uppercase;   /* text-transform property */
+  font-weight: 700;            /* numeric-ish font-weight */
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #22223b;
+}
+
+
+/* ---------- 1. NAVBAR (flexbox, position:sticky, z-index, transitions) ---------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;     /* stays pinned as you scroll */
+  top: 0;
+  z-index: 100;          /* sits above everything else */
+  padding: 20px 40px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.logo {
+  font-size: 1.5rem;   /* rem unit */
+  font-weight: bold;
+}
+
+.accent {
+  color: #e07a5f;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;      /* text-decoration property */
+  color: #22223b;
+  font-weight: 500;
+  transition: color 0.3s ease;   /* transition: property duration timing-function */
+}
+
+.nav-links a:hover {
+  color: #e07a5f;
+  text-decoration: underline;
+}
+
+
+/* ---------- 2. HERO (viewport units, keyframes, background) ---------- */
+.hero {
+  height: 100vh;           /* vh unit: 100% of viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  background-color: #22223b;
+  background-image: linear-gradient(rgba(34,34,59,0.75), rgba(34,34,59,0.75)),
+                     url('https://picsum.photos/id/1043/1600/900');
+  background-size: cover;   /* background-size property */
+  color: #ffffff;
+}
+
+.hero-content {
+  animation: fadeInUp 1.2s ease-out;   /* animation shorthand */
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  color: #f2cc8f;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: 4rem;
+  margin-bottom: 6px;
+}
+
+.hero h2 {
+  font-weight: normal;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #d8d8e8;
+}
+
+.hero-text {
+  max-width: 500px;
+  margin: 0 auto 30px;
+  color: #d8d8e8;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 6px;         /* border-radius property */
+  border: none;
+  text-decoration: none;
+  background-color: #e07a5f;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);       /* transform: scale */
+  background-color: #c9634a;
+}
+
+/* bouncing arrow, looping animation with alternate direction */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  font-size: 1.8rem;
+  color: #f2cc8f;
+  animation: bounce 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-14px); }
+}
+
+
+/* ---------- 3. ABOUT (flexbox row, border-radius circle image, box-shadow) ---------- */
+.about {
+  padding: 80px 40px;
+}
+
+.about-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-image img {
+  border-radius: 50%;          /* circular image */
+  border: 4px solid #f2cc8f;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.about-image img:hover {
+  transform: rotate(4deg) scale(1.04);   /* transform: rotate + scale combined */
+}
+
+.about-text {
+  flex: 1;              /* flex-grow shorthand */
+}
+
+.about-text p {
+  margin-bottom: 16px;
+}
+
+.fun-fact {
+  background-color: rgba(224, 122, 95, 0.1);  /* rgba = color with alpha channel */
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1px dashed #e07a5f;
+}
+
+
+/* ---------- 4. SKILLS (flex-wrap, staggered entrance animation) ---------- */
+.skills {
+  padding: 80px 40px;
+  text-align: center;
+  background-color: #f7f4ef;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;              /* items wrap onto new lines */
+  justify-content: center;
+  gap: 16px;
+  list-style: none;
+}
+
+.skill-chip {
+  padding: 10px 20px;
+  border: 1px solid #e07a5f;
+  border-radius: 30px;
+  background-color: #ffffff;
+  font-weight: 500;
+  opacity: 0;
+  animation: popIn 0.5s ease forwards;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* animation-delay staggered per chip using nth-child */
+.skill-chip:nth-child(1) { animation-delay: 0.1s; }
+.skill-chip:nth-child(2) { animation-delay: 0.2s; }
+.skill-chip:nth-child(3) { animation-delay: 0.3s; }
+.skill-chip:nth-child(4) { animation-delay: 0.4s; }
+.skill-chip:nth-child(5) { animation-delay: 0.5s; }
+.skill-chip:nth-child(6) { animation-delay: 0.6s; }
+.skill-chip:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.6); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.skill-chip:hover {
+  transform: scale(1.08) rotate(-2deg);
+  background-color: #e07a5f;
+  color: #ffffff;
+}
+
+
+/* ---------- 5. PROJECTS (cards, box model, transition + transform on hover) ---------- */
+.projects {
+  padding: 80px 40px;
+}
+
+.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.project-card {
+  width: 320px;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);      /* transform: translate */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+  width: 100%;
+  display: block;             /* removes the default inline-image gap */
+}
+
+.project-card h3 {
+  padding: 16px 16px 4px;
+}
+
+.project-card p {
+  padding: 0 16px;
+  color: #4a4e69;
+  font-size: 0.95rem;
+}
+
+.card-link {
+  text-decoration: none;
+  color: #e07a5f;
+  font-weight: 600;
+  display: inline-block;
+  margin: 12px 16px 16px;
+  transition: transform 0.2s ease;
+}
+
+.card-link:hover {
+  transform: translateX(4px);
+}
+
+
+/* ---------- 6. CSS LAB (dedicated demos: transform, timing-function, display/visibility, z-index) ---------- */
+.playground {
+  padding: 80px 40px;
+  background-color: #f7f4ef;
+}
+
+.playground-intro {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  color: #4a4e69;
+}
+
+.lab-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.lab-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 20px;
+  width: 260px;
+  text-align: center;
+}
+
+.lab-card h4 {
+  margin-bottom: 16px;
+}
+
+.lab-shapes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.shape,
+.timing-box {
+  width: 160px;
+  padding: 10px;
+  background-color: #22223b;
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  transition: transform 0.6s;   /* default timing-function is "ease" */
+}
+
+.shape-rotate:hover   { transform: rotate(25deg); }
+.shape-scale:hover    { transform: scale(1.25); }
+.shape-skew:hover     { transform: skew(15deg); }
+.shape-translate:hover{ transform: translateX(20px); }
+
+.timing-linear      { transition-timing-function: linear; }
+.timing-ease        { transition-timing-function: ease; }
+.timing-ease-in-out  { transition-timing-function: ease-in-out; }
+.timing-box:hover { transform: translateX(30px); background-color: #e07a5f; }
+
+/* display:none vs visibility:hidden demo */
+.visibility-demo {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.box {
+  padding: 14px 10px;
+  background-color: #4a4e69;
+  color: #ffffff;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  flex: 1;
+}
+
+.box-display-none {
+  display: none;    /* completely removed — neighboring boxes close the gap */
+}
+
+.lab-caption {
+  font-size: 0.8rem;
+  color: #4a4e69;
+}
+
+/* z-index demo: two overlapping absolutely-positioned boxes */
+.zindex-demo {
+  position: relative;
+  height: 100px;
+}
+
+.z-box {
+  position: absolute;
+  width: 100px;
+  height: 70px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.8rem;
+}
+
+.z-back {
+  background-color: #f2cc8f;
+  color: #22223b;
+  left: 60px;
+  top: 10px;
+  z-index: 1;
+}
+
+.z-front {
+  background-color: #e07a5f;
+  left: 100px;
+  top: 30px;
+  z-index: 2;   /* higher z-index renders on top */
+}
+
+.code-block {
+  background-color: #22223b;
+  color: #f7f4ef;
+  font-family: 'Courier New', monospace;   /* monospace generic family */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 20px auto 8px;
+  overflow-x: auto;
+}
+
+.code-caption {
+  text-align: center;
+  color: #4a4e69;
+}
+
+
+/* ---------- 7. EXPERIENCE (table styling, hr divider, ordered list) ---------- */
+.experience {
+  padding: 80px 40px;
+}
+
+.experience-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.experience-table th,
+.experience-table td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.experience-table th {
+  background-color: #22223b;
+  color: #ffffff;
+}
+
+.experience-table tbody tr:nth-child(even) {
+  background-color: #f7f4ef;
+}
+
+.divider {
+  max-width: 800px;
+  margin: 40px auto;
+  border: none;
+  border-top: 2px dashed #e5e5e5;
+}
+
+.milestones {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 24px;
+  color: #4a4e69;
+}
+
+.milestones li {
+  margin-bottom: 8px;
+}
+
+
+/* ---------- 8. CONTACT FORM (flex column, inputs, fieldset) ---------- */
+.contact {
+  padding: 80px 40px;
+  text-align: center;
+  background-color: #f7f4ef;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.contact-form label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.contact-form input[type="text"],
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  border-color: #e07a5f;
+  outline: none;
+}
+
+.contact-preference {
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.contact-preference legend {
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0 6px;
+}
+
+.contact-form .btn {
+  align-self: flex-start;   /* align-self overrides align-items for one item */
+}
+
+
+/* ---------- 9. FOOTER (flex space-between) ---------- */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  background-color: #22223b;
+  color: #ffffff;
+}
+
+.footer p {
+  font-size: 0.85rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.social-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #e07a5f;
+  text-decoration: underline;
+}
+
+
+/* ---------- 10. RESPONSIVE DESIGN (media query) ---------- */
+@media (max-width: 700px) {
+
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 20px;
+  }
+
+  .nav-links {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .about-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero h2 {
+    font-size: 1.3rem;
+  }
+
+  .lab-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+}

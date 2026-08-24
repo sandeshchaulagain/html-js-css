@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wanderer's Journal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #3d3d3d;
+      background: #e8e0d4;
+      line-height: 1.6;
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 50px;
+      background: #f5f1eb;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 600;
+      color: #8b7355;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #8b7355;
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #5c4a3a;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      position: relative;
+      height: 340px;
+      background: #c4b5a0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Mountain range made with CSS triangles */
+    .mountains {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .mountain {
+      position: absolute;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .mountain.m1 {
+      left: -8%;
+      border-left: 200px solid transparent;
+      border-right: 200px solid transparent;
+      border-bottom: 220px solid #b8a88e;
+    }
+
+    .mountain.m2 {
+      left: 10%;
+      border-left: 160px solid transparent;
+      border-right: 160px solid transparent;
+      border-bottom: 180px solid #a8987e;
+    }
+
+    .mountain.m3 {
+      left: 26%;
+      border-left: 220px solid transparent;
+      border-right: 220px solid transparent;
+      border-bottom: 260px solid #b0a088;
+    }
+
+    .mountain.m4 {
+      left: 48%;
+      border-left: 180px solid transparent;
+      border-right: 180px solid transparent;
+      border-bottom: 200px solid #a09078;
+    }
+
+    .mountain.m5 {
+      left: 66%;
+      border-left: 240px solid transparent;
+      border-right: 240px solid transparent;
+      border-bottom: 280px solid #b5a58a;
+    }
+
+    .mountain.m6 {
+      left: 84%;
+      border-left: 170px solid transparent;
+      border-right: 170px solid transparent;
+      border-bottom: 190px solid #a8987e;
+    }
+
+    /* Snow caps on peaks */
+    .mountain-cap {
+      position: absolute;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    .mountain-cap.c1 {
+      left: 3%;
+      border-left: 65px solid transparent;
+      border-right: 65px solid transparent;
+      border-bottom: 70px solid #f0ebe3;
+    }
+
+    .mountain-cap.c2 {
+      left: 36%;
+      border-left: 75px solid transparent;
+      border-right: 75px solid transparent;
+      border-bottom: 85px solid #f0ebe3;
+    }
+
+    .mountain-cap.c3 {
+      left: 60%;
+      border-left: 60px solid transparent;
+      border-right: 60px solid transparent;
+      border-bottom: 65px solid #f0ebe3;
+    }
+
+    /* Handwritten notes from the whiteboard */
+    .handwritten-notes {
+      position: absolute;
+      left: 25px;
+      top: 50px;
+      z-index: 6;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive;
+      font-size: 13px;
+      color: #4a4a4a;
+      line-height: 1.9;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    .handwritten-notes .note-line {
+      margin-bottom: 4px;
+    }
+
+    .skew-sketch {
+      margin-top: 14px;
+      width: 70px;
+      height: 50px;
+      border: 1.5px solid #666;
+      transform: skewX(-15deg);
+      position: relative;
+    }
+
+    .skew-sketch::after {
+      content: "Skew";
+      position: absolute;
+      top: -20px;
+      left: 5px;
+      font-size: 12px;
+    }
+
+    /* Hero text */
+    .hero-text {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+
+    .hero-text h1 {
+      font-size: 46px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .hero-text p {
+      font-size: 15px;
+      opacity: 0.9;
+      font-style: italic;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      display: flex;
+      align-items: flex-start;
+      gap: 45px;
+      padding: 55px 70px;
+      background: #faf8f5;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .compass {
+      flex-shrink: 0;
+      width: 150px;
+      height: 150px;
+    }
+
+    .compass svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .about-text h2 {
+      font-size: 24px;
+      font-weight: 500;
+      color: #8b7355;
+      margin-bottom: 6px;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .about-text h3 {
+      font-size: 14px;
+      font-weight: 500;
+      color: #a08060;
+      margin-bottom: 16px;
+    }
+
+    .about-text p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.7;
+      max-width: 450px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav {
+        padding: 14px 24px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .hero {
+        height: 260px;
+      }
+
+      .hero-text h1 {
+        font-size: 30px;
+      }
+
+      .handwritten-notes {
+        display: none;
+      }
+
+      .about {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 35px 24px;
+      }
+
+      .compass {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Wanderer's Journal</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="mountains">
+      <div class="mountain m1"></div>
+      <div class="mountain m2"></div>
+      <div class="mountain m3"></div>
+      <div class="mountain m4"></div>
+      <div class="mountain m5"></div>
+      <div class="mountain m6"></div>
+      <div class="mountain-cap c1"></div>
+      <div class="mountain-cap c2"></div>
+      <div class="mountain-cap c3"></div>
+    </div>
+
+    <div class="handwritten-notes">
+      <div class="note-line">transform: rotate(45deg)</div>
+      <div class="note-line">transform: scale(2)</div>
+      <div class="note-line">transform: translate(20px, 50px)</div>
+      <div class="note-line">transform: skew(30deg)</div>
+      <div class="skew-sketch"></div>
+    </div>
+
+    <div class="hero-text">
+      <h1>Explore The World</h1>
+      <p>One story, one drawing, one place at a time.</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="compass">
+      <svg viewBox="0 0 150 150">
+        <!-- Outer rings -->
+        <circle cx="75" cy="75" r="70" fill="none" stroke="#c4b5a0" stroke-width="2"/>
+        <circle cx="75" cy="75" r="63" fill="none" stroke="#d4c5b0" stroke-width="1"/>
+        
+        <!-- Cardinal tick marks -->
+        <line x1="75" y1="8" x2="75" y2="18" stroke="#8b7355" stroke-width="2"/>
+        <line x1="75" y1="132" x2="75" y2="142" stroke="#8b7355" stroke-width="2"/>
+        <line x1="8" y1="75" x2="18" y2="75" stroke="#8b7355" stroke-width="2"/>
+        <line x1="132" y1="75" x2="142" y2="75" stroke="#8b7355" stroke-width="2"/>
+        
+        <!-- Small ticks -->
+        <line x1="75" y1="22" x2="75" y2="26" stroke="#a8987e" stroke-width="1"/>
+        <line x1="75" y1="124" x2="75" y2="128" stroke="#a8987e" stroke-width="1"/>
+        <line x1="22" y1="75" x2="26" y2="75" stroke="#a8987e" stroke-width="1"/>
+        <line x1="124" y1="75" x2="128" y2="75" stroke="#a8987e" stroke-width="1"/>
+        
+        <!-- Compass needle -->
+        <polygon points="75,22 68,75 75,84 82,75" fill="#a08060"/>
+        <polygon points="75,128 68,75 75,66 82,75" fill="#c4a080"/>
+        
+        <!-- Center pivot -->
+        <circle cx="75" cy="75" r="4.5" fill="#8b7355"/>
+        
+        <!-- Cardinal letters -->
+        <text x="75" y="12" text-anchor="middle" font-size="11" fill="#8b7355" font-weight="600" font-family="Georgia, serif">N</text>
+        <text x="75" y="146" text-anchor="middle" font-size="11" fill="#8b7355" font-weight="600" font-family="Georgia, serif">S</text>
+        <text x="12" y="79" text-anchor="middle" font-size="11" fill="#8b7355" font-weight="600" font-family="Georgia, serif">W</text>
+        <text x="138" y="79" text-anchor="middle" font-size="11" fill="#8b7355" font-weight="600" font-family="Georgia, serif">E</text>
+      </svg>
+    </div>
+
+    <div class="about-text">
+      <h2>About This Journal</h2>
+      <h3>Why I started writing</h3>
+      <p>This page is a small practice project built to demonstrate core HTML and CSS properties: headings, images, links, backgrounds, flexbox, position, and z-index — all in one simple layout. Every image you see is original artwork drawn directly in SVG code.</p>
+    </div>
+  </section>
+
+</body>
+</html>
